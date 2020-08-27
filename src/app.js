@@ -31,7 +31,9 @@ app.get("/weather", async (req, res) => {
   const urlWeather = `http://api.weatherstack.com/current?access_key=${ACCESS_KEY}&query=${qs}`;
 
   if (!req.query.address) {
-    return res.send("No ?address provided.");
+    return res.send({
+      error: "No '?address=<value>' provided.",
+    });
   }
 
   try {
@@ -44,7 +46,9 @@ app.get("/weather", async (req, res) => {
       location: json.location.name,
     });
   } catch (error) {
-    console.error(error);
+    res.send({
+      error: error.toString(),
+    });
   }
 });
 
