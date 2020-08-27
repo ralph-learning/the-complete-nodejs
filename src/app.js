@@ -22,6 +22,13 @@ app.get("/", (_req, res) => {
   });
 });
 
+app.get("/weather", (_req, res) => {
+  res.send({
+    forecast: "It's sowing",
+    location: "Philadeçphia",
+  });
+});
+
 app.get("/help", (_req, res) => {
   res.render("help", {
     title: "Help",
@@ -29,10 +36,22 @@ app.get("/help", (_req, res) => {
   });
 });
 
+app.get("/help/*", (_req, res) => {
+  res.render("404", {
+    text: "Help article not found",
+  });
+});
+
 app.get("/about", (_req, res) => {
   res.render("about", {
     title: "About",
     name: "Ralph Effting",
+  });
+});
+
+app.get("*", (_req, res) => {
+  res.render("404", {
+    text: "Page not found",
   });
 });
 
