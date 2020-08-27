@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require("path");
 
 const express = require("express");
@@ -24,7 +25,7 @@ app.get("/", (_req, res) => {
 });
 
 app.get("/weather", async (req, res) => {
-  const ACCESS_KEY = "e40d1cca7e7e7f464236024432f79237"; // TODO: extract to use env var
+  const ACCESS_KEY = process.env.WEATHERSTACK_KEY;
   const qs = encodeURI(req.query.address);
 
   const urlWeather = `http://api.weatherstack.com/current?access_key=${ACCESS_KEY}&query=${qs}`;
