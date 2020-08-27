@@ -27,11 +27,10 @@ app.get("/", (_req, res) => {
 app.get("/weather", async (req, res) => {
   const ACCESS_KEY = process.env.WEATHERSTACK_KEY;
   const qs = encodeURI(req.query.address);
-
   const urlWeather = `http://api.weatherstack.com/current?access_key=${ACCESS_KEY}&query=${qs}`;
 
   if (!req.query.address) {
-    return res.send({
+    return res.send(500, {
       error: "No '?address=<value>' provided.",
     });
   }
@@ -46,7 +45,7 @@ app.get("/weather", async (req, res) => {
       location: json.location.name,
     });
   } catch (error) {
-    res.send({
+    res.send(500, {
       error: error.toString(),
     });
   }
