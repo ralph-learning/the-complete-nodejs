@@ -19,7 +19,7 @@ app.set("views", viewsPath);
 
 app.get("/", (_req, res) => {
   res.render("index", {
-    title: "Home page",
+    title: "Weather",
     name: "Ralph Effting",
   });
 });
