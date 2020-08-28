@@ -37,8 +37,9 @@ app.get("/weather", async (req, res) => {
 
   try {
     const response = await fetch(urlWeather);
-
     const json = await response.json();
+
+    if (json.success === false) throw "Error: " + json.error.info;
 
     res.send({
       forecast: json.current.weather_descriptions.join(", "),
