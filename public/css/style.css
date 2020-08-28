@@ -41,9 +41,11 @@ header a {
 .weather {
   display: flex;
   align-items: flex-start;
+  margin-top: 24px;
 }
 
-.weather > .box > p {
+.weather > .box > p,
+.weather > .box > span {
   margin: 0;
   margin-left: 8px;
   margin-bottom: 4px;
@@ -51,5 +53,14 @@ header a {
 
 .weather > .box > p:first-of-type {
   font-weight: bold;
-  font-size: 32px;
+  font-size: 24px;
+}
+
+.temperature {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+img {
+  width: 80px;
 }

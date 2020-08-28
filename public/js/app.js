@@ -11,7 +11,8 @@ async function getWeather(adress) {
       <div class="weather">
         <img src=${json.icon} />
         <div class="box">
-          <p>${json.location}</p>
+          <p>${json.location} - ${json.country}</p>
+          <span class="temperature">${json.temperature}ºc</span>
           <p>${json.forecast}</p>
         </div>
       </div>
