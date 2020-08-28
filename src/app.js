@@ -47,6 +47,7 @@ app.get("/weather", async (req, res) => {
     res.send({
       forecast: json.current.weather_descriptions.join(", "),
       location: json.location.name,
+      icon: json.current.weather_icons[0],
     });
   } catch (error) {
     res.send(500, {

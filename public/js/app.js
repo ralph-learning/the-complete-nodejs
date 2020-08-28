@@ -7,7 +7,15 @@ async function getWeather(adress) {
     const json = await response.json();
     if (!response.ok) throw new Error(json.error);
 
-    result.innerHTML = `<h3>${json.location} - ${json.forecast}</h3>`;
+    result.innerHTML = `
+      <div class="weather">
+        <img src=${json.icon} />
+        <div class="box">
+          <p>${json.location}</p>
+          <p>${json.forecast}</p>
+        </div>
+      </div>
+    `;
   } catch (error) {
     result.innerHTML = `<h3>${error.message}</h3>`;
   }
