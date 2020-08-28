@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 const fetch = require("node-fetch");
+const morgan = require("morgan");
 
 const app = express();
 const port = 4000;
@@ -14,6 +15,8 @@ const partialsPath = path.join(__dirname, "../templates/partials");
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicPath));
+app.use(morgan("dev"));
+
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 
